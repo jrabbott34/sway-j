@@ -1,0 +1,152 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 0,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery",
+        "tray"
+    ],
+
+    // ── workspaces ─────────────────────────────────────────────────────────
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+
+    "sway/mode": {
+        "format": "  {}"
+    },
+
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    // ── clock + calendar popup ─────────────────────────────────────────────
+    "clock": {
+        "interval": 60,
+        "format": "  {:%H:%M}",
+        "format-alt": "  {:%a %b %d}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "right",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#cdd6f4'><b>{}</b></span>",
+                "days":       "<span color='#cdd6f4'>{}</span>",
+                "weeks":      "<span color='#7aa2f7'>W{}</span>",
+                "weekdays":   "<span color='#89b4fa'><b>{}</b></span>",
+                "today":      "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        },
+        "on-click": "yad --calendar --no-buttons --fixed --close-on-unfocus --undecorated --title=Calendar 2>/dev/null || true",
+        "on-click-right": ""
+    },
+
+    // ── network ───────────────────────────────────────────────────────────
+    "network": {
+        "interval": 5,
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  {ipaddr}",
+        "format-linked": "  {ifname} (no IP)",
+        "format-disconnected": "󰤭  Offline",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ipaddr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "alacritty -e nmtui"
+    },
+
+    // ── audio ─────────────────────────────────────────────────────────────
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟  Muted",
+        "format-bluetooth": "󰂯 {icon} {volume}%",
+        "format-bluetooth-muted": "󰂯 󰝟",
+        "format-icons": {
+            "headphone": "󰋋",
+            "hands-free": "󰋋",
+            "headset": "󰋋",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip-format": "{desc}"
+    },
+
+    // ── cpu ───────────────────────────────────────────────────────────────
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%",
+        "format-alt": "  {avg_frequency} GHz",
+        "tooltip": true,
+        "tooltip-format": "CPU: {usage}%\nFreq: {avg_frequency} GHz"
+    },
+
+    // ── memory ────────────────────────────────────────────────────────────
+    "memory": {
+        "interval": 5,
+        "format": "  {used:0.1f}G",
+        "format-alt": "  {percentage}%",
+        "tooltip": true,
+        "tooltip-format": "Used: {used:0.2f} GiB / {total:0.2f} GiB\nAvail: {avail:0.2f} GiB"
+    },
+
+    // ── battery (laptop) ──────────────────────────────────────────────────
+    "battery": {
+        "interval": 30,
+        "states": {
+            "good":     95,
+            "warning":  30,
+            "critical": 10
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged":  "󰚥 {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "tooltip-format": "{timeTo}\nCycles: {cycles}"
+    },
+
+    // ── system tray ───────────────────────────────────────────────────────
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}
