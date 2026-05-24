@@ -64,7 +64,7 @@ bindsym $mod+Return       exec $term
 bindsym $mod+d            exec $menu
 bindsym $mod+e            exec thunar
 bindsym $mod+b            exec firefox
-bindsym $mod+Shift+l      exec $locker
+bindsym $mod+ctrl+l       exec $locker
 
 # screenshots
 bindsym Print             exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
