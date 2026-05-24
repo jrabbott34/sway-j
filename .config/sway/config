@@ -7,7 +7,7 @@ set $right l
 
 set $term alacritty
 set $menu wofi --show drun --prompt "Search" --allow-images
-set $locker swaylock --daemonize
+set $locker swaylock
 # ─── output ───────────────────────────────────────────────────────────────────
 # Replace eDP-1 / HDMI-A-1 with your actual output names (swaymsg -t get_outputs)
 # Solid color until you drop a wallpaper at ~/.config/sway/wallpaper.jpg
@@ -64,7 +64,7 @@ bindsym $mod+Return       exec $term
 bindsym $mod+d            exec $menu
 bindsym $mod+e            exec thunar
 bindsym $mod+b            exec firefox
-bindsym $mod+l            exec $locker
+bindsym $mod+Shift+l      exec $locker
 
 # screenshots
 bindsym Print             exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png

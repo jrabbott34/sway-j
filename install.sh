@@ -138,7 +138,6 @@ KERNEL_PKGS=(
 # ─── misc / aur ───────────────────────────────────────────────────────────────
 MISC_PKGS=(
     trezor-suite-bin
-    icaclient
 )
 
 ALL_PKGS=(
