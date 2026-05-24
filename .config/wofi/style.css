@@ -1,0 +1,68 @@
+window {
+    margin: 0;
+    border: 2px solid #414868;
+    border-radius: 12px;
+    background-color: #1a1b26;
+    font-family: "FiraCode Nerd Font", monospace;
+    font-size: 14px;
+}
+
+#input {
+    margin: 8px;
+    padding: 8px 14px;
+    color: #c0caf5;
+    background-color: #16161e;
+    border: 1px solid #414868;
+    border-radius: 8px;
+    outline: none;
+}
+
+#input:focus {
+    border-color: #7aa2f7;
+}
+
+#inner-box {
+    margin: 4px 8px 8px 8px;
+    background: transparent;
+}
+
+#outer-box {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+#scroll {
+    margin: 0;
+    padding: 0;
+}
+
+#text {
+    padding: 4px 8px;
+    color: #c0caf5;
+}
+
+#text:selected {
+    color: #1a1b26;
+}
+
+#entry {
+    padding: 4px;
+    border-radius: 8px;
+    background: transparent;
+}
+
+#entry:selected {
+    background-color: #7aa2f7;
+    border-radius: 8px;
+    outline: none;
+}
+
+#entry:hover {
+    background-color: #1e2030;
+    border-radius: 8px;
+}
+
+image {
+    padding-right: 8px;
+}
