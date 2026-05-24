@@ -8,11 +8,11 @@ set $right l
 set $term alacritty
 set $menu wofi --show drun --prompt "Search" --allow-images
 set $locker swaylock --daemonize
-set $wallpaper $HOME/.config/sway/wallpaper.jpg
-
 # ─── output ───────────────────────────────────────────────────────────────────
 # Replace eDP-1 / HDMI-A-1 with your actual output names (swaymsg -t get_outputs)
-output * bg $wallpaper fill
+# Solid color until you drop a wallpaper at ~/.config/sway/wallpaper.jpg
+# then swap the line below for: output * bg ~/.config/sway/wallpaper.jpg fill
+output * bg #1a1b26 solid_color
 # output eDP-1 resolution 1920x1080 position 0,0 scale 1
 
 # ─── input ────────────────────────────────────────────────────────────────────
@@ -48,7 +48,6 @@ client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
 exec_always --no-startup-id pkill waybar; waybar
-exec_always --no-startup-id swaybg -m fill -i $wallpaper
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --indicator
