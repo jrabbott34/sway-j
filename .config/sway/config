@@ -47,8 +47,6 @@ client.unfocused        #414868 #1a1b26 #565f89 #414868   #414868
 client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
-exec_always --no-startup-id pkill waybar; waybar
-
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
