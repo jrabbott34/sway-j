@@ -10,8 +10,6 @@ set $menu wofi --show drun --prompt "Search" --allow-images
 set $locker swaylock
 # ─── output ───────────────────────────────────────────────────────────────────
 # Replace eDP-1 / HDMI-A-1 with your actual output names (swaymsg -t get_outputs)
-# Solid color until you drop a wallpaper at ~/.config/sway/wallpaper.jpg
-# then swap the line below for: output * bg ~/.config/sway/wallpaper.jpg fill
 output * bg #1a1b26 solid_color
 # output eDP-1 resolution 1920x1080 position 0,0 scale 1
 
@@ -47,6 +45,9 @@ client.unfocused        #414868 #1a1b26 #565f89 #414868   #414868
 client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
+exec --no-startup-id swww-daemon
+exec --no-startup-id sleep 0.5 && [ -f ~/.config/sway/wallpaper.jpg ] && swww img ~/.config/sway/wallpaper.jpg --transition-type wipe --transition-duration 1
+
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

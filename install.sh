@@ -15,7 +15,7 @@ SWAY_PKGS=(
     sway
     swaylock
     swayidle
-    swaybg
+    swww
     waybar
     wofi
     dunst
@@ -52,6 +52,9 @@ NETWORK_PKGS=(
 
 # ─── audio / media ───────────────────────────────────────────────────────────
 MEDIA_PKGS=(
+    pulseaudio
+    pulseaudio-alsa
+    pulseaudio-bluetooth
     pavucontrol
     mpv
     yt-dlp
