@@ -46,7 +46,7 @@ client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
 exec --no-startup-id awww
-exec --no-startup-id sleep 0.5 && waypaper --restore --backend awww
+exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --indicator
@@ -80,9 +80,8 @@ bindsym $mod+Shift+e      exec wlogout
 bindsym $mod+Shift+w      exec waypaper --random --backend awww
 
 # ─── keybindings — sway control ───────────────────────────────────────────────
-bindsym $mod+Shift+q      kill
+bindsym $mod+q            kill
 bindsym $mod+Shift+r      reload
-bindsym $mod+Shift+c      reload
 
 floating_modifier $mod normal
 
