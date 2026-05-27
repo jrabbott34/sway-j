@@ -45,8 +45,7 @@ client.unfocused        #414868 #1a1b26 #565f89 #414868   #414868
 client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
-exec --no-startup-id swww-daemon
-exec --no-startup-id sleep 0.5 && [ -f ~/.config/sway/wallpaper.jpg ] && swww img ~/.config/sway/wallpaper.jpg --transition-type wipe --transition-duration 1
+exec --no-startup-id awww
 
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet --indicator
@@ -77,7 +76,7 @@ bindsym $mod+c            exec hyprpicker -a
 bindsym $mod+Shift+e      exec wlogout
 
 # wallpaper picker
-bindsym $mod+Shift+w      exec waypaper --backend swww
+bindsym $mod+Shift+w      exec waypaper --random --backend awww
 
 # ─── keybindings — sway control ───────────────────────────────────────────────
 bindsym $mod+Shift+q      kill

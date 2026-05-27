@@ -15,7 +15,7 @@ SWAY_PKGS=(
     sway
     swaylock
     swayidle
-    swww
+    awww
     waybar
     wofi
     dunst
