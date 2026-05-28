@@ -25,6 +25,7 @@
         "cpu",
         "memory",
         "battery",
+        "power-profiles-daemon",
         "idle_inhibitor",
         "custom/notification",
         "tray"
@@ -148,6 +149,19 @@
         "format-alt": "{icon} {time} remaining",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{timeTo}\nHealth: {health}%"
+    },
+
+    // ── power profiles ───────────────────────────────────────────────────────
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "{profile}\n{driver}",
+        "format-icons": {
+            "default":      "󰗑",
+            "performance":  "󱐌",
+            "balanced":     "󰗑",
+            "power-saver":  "󰌪"
+        }
     },
 
     // ── idle inhibitor ───────────────────────────────────────────────────────

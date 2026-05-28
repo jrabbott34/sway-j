@@ -1,0 +1,19 @@
+# kanshi display profiles — auto-applied on hotplug
+# Run `swaymsg -t get_outputs` to find your output names.
+
+# Laptop only
+profile laptop {
+    output eDP-1 enable scale 1
+}
+
+# Laptop + external monitor (side by side, external is primary)
+# profile docked {
+#     output eDP-1 enable scale 1 position 1920,0
+#     output HDMI-A-1 enable scale 1 position 0,0
+# }
+
+# External monitor only (lid closed)
+# profile closed {
+#     output eDP-1 disable
+#     output HDMI-A-1 enable scale 1 position 0,0
+# }

@@ -59,6 +59,7 @@ client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 # ─── autostart ────────────────────────────────────────────────────────────────
 exec --no-startup-id awww
 exec --no-startup-id libinput-gestures
+exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync

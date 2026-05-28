@@ -56,6 +56,7 @@ window#waybar.hidden {
 #cpu,
 #memory,
 #battery,
+#power-profiles-daemon,
 #idle_inhibitor,
 #tray {
     background-color: @surface0;
@@ -208,6 +209,20 @@ window#waybar.hidden {
 
 @keyframes blink {
     to { color: @base; background-color: @red; }
+}
+
+/* ── power profiles ────────────────────────────────────────────────────── */
+#power-profiles-daemon {
+    color: @green;
+}
+#power-profiles-daemon.performance {
+    color: @peach;
+}
+#power-profiles-daemon.balanced {
+    color: @green;
+}
+#power-profiles-daemon.power-saver {
+    color: @blue;
 }
 
 /* ── idle inhibitor ────────────────────────────────────────────────────── */

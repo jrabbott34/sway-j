@@ -23,6 +23,7 @@ SWAY_PKGS=(
     wlr-randr
     xdg-desktop-portal-wlr
     wlogout
+    kanshi
 )
 
 # ─── system / shell ───────────────────────────────────────────────────────────
