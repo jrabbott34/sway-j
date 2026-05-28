@@ -181,7 +181,6 @@ DM_PKGS=(
 # ─── misc / aur ───────────────────────────────────────────────────────────────
 MISC_PKGS=(
     trezor-suite-bin
-    grub-theme-tokyonight-git
 )
 
 ALL_PKGS=(
@@ -219,17 +218,5 @@ sudo systemctl enable gdm.service
 # ─── input group for libinput-gestures ───────────────────────────────────────
 echo "==> Adding $USER to input group (required for gestures)..."
 sudo usermod -aG input "$USER"
-
-# ─── grub tokyo night theme ───────────────────────────────────────────────────
-echo "==> Configuring GRUB Tokyo Night theme..."
-GRUB_THEME_PATH="/usr/share/grub/themes/tokyonight/theme.txt"
-if [[ -f "$GRUB_THEME_PATH" ]]; then
-    sudo sed -i "s|^#\?GRUB_THEME=.*|GRUB_THEME=\"$GRUB_THEME_PATH\"|" /etc/default/grub
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
-    echo "  GRUB theme applied."
-else
-    echo "  WARNING: Theme not found at $GRUB_THEME_PATH — skipping GRUB config."
-    echo "           Run: find /usr/share/grub/themes -name theme.txt to locate it."
-fi
 
 echo "==> Done. Run ./setup.sh to deploy configs."
