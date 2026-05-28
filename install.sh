@@ -31,6 +31,8 @@ SYSTEM_PKGS=(
     htop btop bat
     eza yazi
     fish zsh
+    starship
+    cliphist
     jq go
     cava
     acpi sysstat
@@ -101,6 +103,7 @@ APPEARANCE_PKGS=(
     qt5-wayland
     qt6ct
     papirus-icon-theme
+    bibata-cursor-theme
     catppuccin-gtk-theme-mocha
     ttf-font-awesome
     ttf-firacode-nerd
