@@ -49,6 +49,7 @@ exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync
 exec --no-startup-id udiskie --tray
+exec --no-startup-id blueman-applet
 # Set your latitude (-l) and longitude (-L) for accurate sunrise/sunset times
 exec --no-startup-id wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500
 exec --no-startup-id nm-applet --indicator
