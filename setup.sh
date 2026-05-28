@@ -22,7 +22,7 @@ deploy() {
 
 echo "==> Deploying configs..."
 
-for dir in sway waybar swaylock wofi swaync gtk-3.0 gtk-4.0 foot alacritty fish starship kanshi; do
+for dir in sway waybar swaylock wofi swaync gtk-3.0 gtk-4.0 foot alacritty fish starship kanshi yazi; do
     src="$CONFIG_SRC/$dir"
     dst="$CONFIG_DST/$dir"
     [[ -d "$src" ]] && deploy "$src" "$dst"
