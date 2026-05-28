@@ -12,7 +12,7 @@ fi
 
 # ─── core sway stack ──────────────────────────────────────────────────────────
 SWAY_PKGS=(
-    sway
+    swayfx
     swaylock-effects
     swayidle
     awww
