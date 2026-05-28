@@ -94,6 +94,9 @@ bindsym $mod+v            exec cliphist list | wofi --dmenu --prompt "Clipboard"
 # color picker
 bindsym $mod+c            exec hyprpicker -a
 
+# toggle waybar
+bindsym $mod+Shift+b      bar bar-0 mode toggle
+
 # logout menu
 bindsym $mod+Shift+e      exec wlogout
 
