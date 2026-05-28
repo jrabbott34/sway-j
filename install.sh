@@ -44,6 +44,7 @@ SYSTEM_PKGS=(
     yad
     wlsunset
     udiskie
+    libinput-gestures
 )
 
 # ─── network ─────────────────────────────────────────────────────────────────
@@ -212,5 +213,9 @@ sudo systemctl enable --now avahi-daemon.service
 sudo systemctl enable --now cups.socket
 sudo systemctl enable --now ipp-usb.service
 sudo systemctl enable gdm.service
+
+# ─── input group for libinput-gestures ───────────────────────────────────────
+echo "==> Adding $USER to input group (required for gestures)..."
+sudo usermod -aG input "$USER"
 
 echo "==> Done. Run ./setup.sh to deploy configs."
