@@ -25,6 +25,7 @@
         "cpu",
         "memory",
         "battery",
+        "idle_inhibitor",
         "custom/notification",
         "tray"
     ],
@@ -147,6 +148,17 @@
         "format-alt": "{icon} {time} remaining",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{timeTo}\nHealth: {health}%"
+    },
+
+    // ── idle inhibitor ───────────────────────────────────────────────────────
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰒳",
+            "deactivated": "󰒲"
+        },
+        "tooltip-format-activated": "Idle inhibitor ON — screen won't sleep",
+        "tooltip-format-deactivated": "Idle inhibitor OFF"
     },
 
     // ── weather ───────────────────────────────────────────────────────────
