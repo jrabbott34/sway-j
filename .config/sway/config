@@ -101,7 +101,7 @@ bindsym $mod+c            exec hyprpicker -a
 bindsym $mod+Shift+b      exec pkill -SIGUSR1 waybar
 
 # logout menu
-bindsym $mod+Shift+e      exec wlogout
+bindsym $mod+Shift+e      exec wlogout -b 3 -c 20 -r 20
 
 # notification center
 bindsym $mod+n            exec swaync-client -t
