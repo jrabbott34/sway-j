@@ -15,11 +15,11 @@
     ],
 
     "modules-center": [
+        "custom/weather",
         "clock"
     ],
 
     "modules-right": [
-        "custom/weather",
         "network",
         "pulseaudio",
         "cpu",

@@ -51,7 +51,6 @@ window#waybar.hidden {
 #workspaces,
 #mode,
 #scratchpad,
-#clock,
 #network,
 #pulseaudio,
 #cpu,
@@ -119,7 +118,10 @@ window#waybar.hidden {
     color: @sky;
     font-weight: bold;
     background-color: @surface0;
-    min-width: 90px;
+    border-radius: 0 8px 8px 0;
+    padding: 0 14px 0 10px;
+    margin: 4px 3px 4px 0;
+    min-width: 110px;
 }
 
 #clock tooltip {
@@ -222,15 +224,21 @@ window#waybar.hidden {
     border-radius: 8px;
 }
 
-/* ── weather ───────────────────────────────────────────────────────────── */
+/* ── weather + clock — single center bubble ────────────────────────────── */
 #custom-weather {
     color: @sky;
     font-size: 14px;
+    background-color: @surface0;
+    border-radius: 8px 0 0 8px;
+    padding: 0 10px 0 14px;
+    margin: 4px 0 4px 3px;
+    border-right: 1px solid @surface1;
 }
 
 #custom-weather.unknown {
     color: @overlay0;
 }
+
 
 /* ── mpris ─────────────────────────────────────────────────────────────── */
 #mpris {
