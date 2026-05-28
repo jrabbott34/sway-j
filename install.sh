@@ -138,6 +138,11 @@ KERNEL_PKGS=(
     intel-ucode
 )
 
+# ─── display manager ─────────────────────────────────────────────────────────
+DM_PKGS=(
+    gdm
+)
+
 # ─── misc / aur ───────────────────────────────────────────────────────────────
 MISC_PKGS=(
     trezor-suite-bin
@@ -156,6 +161,7 @@ ALL_PKGS=(
     "${VIRT_PKGS[@]}"
     "${BT_PKGS[@]}"
     "${KERNEL_PKGS[@]}"
+    "${DM_PKGS[@]}"
     "${MISC_PKGS[@]}"
 )
 
@@ -167,5 +173,6 @@ echo "==> Enabling services..."
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now libvirtd.service
 sudo systemctl enable --now NetworkManager.service
+sudo systemctl enable gdm.service
 
 echo "==> Done. Run ./setup.sh to deploy configs."
