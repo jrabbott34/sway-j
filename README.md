@@ -36,7 +36,7 @@ dbus-run-session sway
 | Binding | Action |
 |---------|--------|
 | `Super + Return` | Terminal (alacritty) |
-| `Super + D` | App launcher (wofi) |
+| `Super + Space` | App launcher (wofi) |
 | `Super + E` | File manager (thunar) |
 | `Super + B` | Firefox |
 | `Super + L` | Lock screen (swaylock) |
