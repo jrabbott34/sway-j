@@ -10,7 +10,8 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad"
+        "sway/scratchpad",
+        "mpris"
     ],
 
     "modules-center": [
@@ -23,6 +24,7 @@
         "cpu",
         "memory",
         "battery",
+        "custom/notification",
         "tray"
     ],
 
@@ -142,6 +144,46 @@
         "format-alt": "{icon} {time}",
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "tooltip-format": "{timeTo}\nCycles: {cycles}"
+    },
+
+    // ── media player ──────────────────────────────────────────────────────────
+    "mpris": {
+        "format": "{player_icon} {dynamic}",
+        "format-paused": " {dynamic}",
+        "dynamic-len": 28,
+        "dynamic-order": ["title", "artist"],
+        "player-icons": {
+            "default": "",
+            "spotify": "",
+            "firefox": "󰈹",
+            "mpv": ""
+        },
+        "status-icons": {
+            "paused": ""
+        },
+        "tooltip-format": "{title}\n{artist}\n{player}"
+    },
+
+    // ── swaync notification bell ───────────────────────────────────────────────
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "󰂚",
+            "none": "󰂜",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󰂚",
+            "inhibited-none": "󰂜",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     },
 
     // ── system tray ───────────────────────────────────────────────────────

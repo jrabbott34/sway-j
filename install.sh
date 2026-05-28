@@ -18,7 +18,7 @@ SWAY_PKGS=(
     awww
     waybar
     wofi
-    dunst
+    swaync
     wl-clipboard
     wlr-randr
     xdg-desktop-portal-wlr
@@ -40,6 +40,8 @@ SYSTEM_PKGS=(
     gnome-keyring seahorse
     timeshift
     yad
+    wlsunset
+    udiskie
 )
 
 # ─── network ─────────────────────────────────────────────────────────────────
@@ -56,6 +58,7 @@ MEDIA_PKGS=(
     pulseaudio-alsa
     pulseaudio-bluetooth
     pavucontrol
+    playerctl
     mpv
     yt-dlp
     redshift
@@ -71,12 +74,14 @@ TERMINAL_PKGS=(
 FILE_PKGS=(
     thunar
     thunar-volman
+    thunar-archive-plugin
     gvfs
     gvfs-afc
     gvfs-smb
     samba
     xfce4-settings
     tumbler
+    file-roller
     gnome-disk-utility
     dosfstools
 )
@@ -95,6 +100,8 @@ APPEARANCE_PKGS=(
     waypaper
     qt5-wayland
     qt6ct
+    papirus-icon-theme
+    catppuccin-gtk-theme-mocha
     ttf-font-awesome
     ttf-firacode-nerd
     ttf-ms-fonts

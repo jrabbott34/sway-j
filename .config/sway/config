@@ -23,7 +23,7 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_layout us
-repeat_delay 300
+    repeat_delay 300
     repeat_rate 50
 }
 
@@ -47,7 +47,10 @@ client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 exec --no-startup-id awww
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
-exec --no-startup-id dunst
+exec --no-startup-id swaync
+exec --no-startup-id udiskie --tray
+# Set your latitude (-l) and longitude (-L) for accurate sunrise/sunset times
+exec --no-startup-id wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id gnome-keyring-daemon --start --components=secrets,ssh,gpg
@@ -74,6 +77,9 @@ bindsym $mod+c            exec hyprpicker -a
 
 # logout menu
 bindsym $mod+Shift+e      exec wlogout
+
+# notification center
+bindsym $mod+n            exec swaync-client -t
 
 # wallpaper picker
 bindsym $mod+Shift+w      exec waypaper --random --backend awww

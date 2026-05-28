@@ -222,6 +222,28 @@ window#waybar.hidden {
     border-radius: 8px;
 }
 
+/* ── mpris ─────────────────────────────────────────────────────────────── */
+#mpris {
+    color: @green;
+    font-style: italic;
+}
+
+#mpris.paused {
+    color: @subtext;
+}
+
+/* ── notification bell ─────────────────────────────────────────────────── */
+#custom-notification {
+    color: @lavender;
+    font-size: 15px;
+    padding: 0 10px;
+}
+
+#custom-notification.dnd-none,
+#custom-notification.dnd-notification {
+    color: @overlay0;
+}
+
 /* ── tooltip global ────────────────────────────────────────────────────── */
 tooltip {
     background: @mantle;
