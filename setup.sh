@@ -53,6 +53,21 @@ if command -v fish &>/dev/null; then
     fi
 fi
 
+# ── grub tokyo night theme ───────────────────────────────────────────────────
+GRUB_THEME_SRC="$REPO_DIR/grub/tokyo-night"
+GRUB_THEME_DST="/boot/grub/themes/tokyo-night"
+if [[ -d "$GRUB_THEME_SRC" ]]; then
+    echo ""
+    read -rp "==> Deploy GRUB Tokyo Night theme? (requires sudo) [y/N] " ans
+    if [[ "${ans,,}" == "y" ]]; then
+        sudo mkdir -p "$GRUB_THEME_DST"
+        sudo cp "$GRUB_THEME_SRC/theme.txt" "$GRUB_THEME_DST/theme.txt"
+        sudo sed -i "s|^#\?GRUB_THEME=.*|GRUB_THEME=\"$GRUB_THEME_DST/theme.txt\"|" /etc/default/grub
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+        echo "  GRUB theme deployed."
+    fi
+fi
+
 echo ""
 echo "==> Done. Log out and select Sway from your display manager, or run:"
 echo "    dbus-run-session sway"

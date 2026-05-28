@@ -1,0 +1,50 @@
+# Tokyo Night — custom GRUB theme
+# Colors: https://github.com/enkia/tokyo-night-vscode-theme
+
+desktop-color:    "#1a1b26"
+title-color:      "#7aa2f7"
+title-text:       ""
+message-bg-color: "#1e2030"
+message-color:    "#c0caf5"
+
+# ── title label ──────────────────────────────────────────────────────────────
++ label {
+    left  = 0
+    top   = 40
+    width = 100%
+    align = "center"
+    text  = "Select boot entry"
+    color = "#7aa2f7"
+}
+
+# ── boot menu ─────────────────────────────────────────────────────────────────
++ boot_menu {
+    left   = "15%"
+    top    = 100
+    width  = "70%"
+    height = "55%"
+
+    item_color          = "#565f89"
+    selected_item_color = "#c0caf5"
+
+    item_height  = 36
+    item_padding = 14
+    item_spacing = 6
+
+    scrollbar = false
+}
+
+# ── timeout progress bar ──────────────────────────────────────────────────────
++ progress_bar {
+    id           = "__timeout__"
+    left         = "15%"
+    width        = "70%"
+    top          = -50
+    height       = 14
+    show_text    = true
+    text         = "Booting in @TIMEOUT_REMAINING@s — press any key to stop"
+    fg_color     = "#7aa2f7"
+    bg_color     = "#1e2030"
+    border_color = "#414868"
+    text_color   = "#565f89"
+}
