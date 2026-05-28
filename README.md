@@ -1,4 +1,4 @@
-# swaybuild
+# swayfx build
 
 Arch Linux · Sway (Wayland) dotfiles and installer.
 Built as a clean alternative to Hyprland (no `.lua` configs).
