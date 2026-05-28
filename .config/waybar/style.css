@@ -222,6 +222,16 @@ window#waybar.hidden {
     border-radius: 8px;
 }
 
+/* ── weather ───────────────────────────────────────────────────────────── */
+#custom-weather {
+    color: @sky;
+    font-size: 14px;
+}
+
+#custom-weather.unknown {
+    color: @overlay0;
+}
+
 /* ── mpris ─────────────────────────────────────────────────────────────── */
 #mpris {
     color: @green;
