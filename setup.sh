@@ -22,11 +22,14 @@ deploy() {
 
 echo "==> Deploying configs..."
 
-for dir in sway waybar swaylock wofi swaync gtk-3.0 gtk-4.0 foot alacritty fish starship libinput-gestures; do
+for dir in sway waybar swaylock wofi swaync gtk-3.0 gtk-4.0 foot alacritty fish starship; do
     src="$CONFIG_SRC/$dir"
     dst="$CONFIG_DST/$dir"
     [[ -d "$src" ]] && deploy "$src" "$dst"
 done
+
+# ── libinput-gestures (flat file, not a dir) ──────────────────────────────────
+deploy "$CONFIG_SRC/libinput-gestures.conf" "$CONFIG_DST/libinput-gestures.conf"
 
 # ── wallpaper placeholder ─────────────────────────────────────────────────────
 WALLPAPER_DST="$HOME/.config/sway/wallpaper.jpg"
