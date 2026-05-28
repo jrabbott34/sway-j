@@ -135,6 +135,29 @@ VIRT_PKGS=(
 BT_PKGS=(
     bluez
     bluez-utils
+    blueman
+)
+
+# ─── printing ─────────────────────────────────────────────────────────────────
+PRINT_PKGS=(
+    cups
+    cups-pdf
+    system-config-printer
+    ghostscript
+    gsfonts
+    gutenprint
+    foomatic-db-engine
+    foomatic-db
+    avahi
+    nss-mdns
+)
+
+# ─── scanning ─────────────────────────────────────────────────────────────────
+SCAN_PKGS=(
+    sane
+    sane-airscan
+    ipp-usb
+    simple-scan
 )
 
 # ─── kernel / firmware ────────────────────────────────────────────────────────
@@ -167,6 +190,8 @@ ALL_PKGS=(
     "${APP_PKGS[@]}"
     "${VIRT_PKGS[@]}"
     "${BT_PKGS[@]}"
+    "${PRINT_PKGS[@]}"
+    "${SCAN_PKGS[@]}"
     "${KERNEL_PKGS[@]}"
     "${DM_PKGS[@]}"
     "${MISC_PKGS[@]}"
@@ -180,6 +205,9 @@ echo "==> Enabling services..."
 sudo systemctl enable --now bluetooth.service
 sudo systemctl enable --now libvirtd.service
 sudo systemctl enable --now NetworkManager.service
+sudo systemctl enable --now avahi-daemon.service
+sudo systemctl enable --now cups.socket
+sudo systemctl enable --now ipp-usb.service
 sudo systemctl enable gdm.service
 
 echo "==> Done. Run ./setup.sh to deploy configs."
