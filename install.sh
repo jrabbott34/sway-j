@@ -205,6 +205,13 @@ ALL_PKGS=(
 echo "==> Installing all packages..."
 yay -S --noconfirm --needed "${ALL_PKGS[@]}"
 
+# ─── pacman tweaks ────────────────────────────────────────────────────────────
+echo "==> Configuring pacman..."
+sudo sed -i 's/^#Color$/Color/'                            /etc/pacman.conf
+sudo sed -i 's/^ParallelDownloads = .*/ParallelDownloads = 8/' /etc/pacman.conf
+grep -q "^ILoveCandy" /etc/pacman.conf || \
+    sudo sed -i '/^ParallelDownloads/a ILoveCandy'         /etc/pacman.conf
+
 # ─── enable services ─────────────────────────────────────────────────────────
 echo "==> Enabling services..."
 sudo systemctl enable --now bluetooth.service
