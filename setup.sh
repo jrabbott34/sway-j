@@ -43,6 +43,13 @@ fi
 # ── screenshots dir ───────────────────────────────────────────────────────────
 mkdir -p "$HOME/Pictures"
 
+# ── libinput-gestures systemd user service ────────────────────────────────────
+SYSTEMD_USER_DIR="$HOME/.config/systemd/user"
+mkdir -p "$SYSTEMD_USER_DIR"
+deploy "$CONFIG_SRC/systemd/user/libinput-gestures.service" \
+       "$SYSTEMD_USER_DIR/libinput-gestures.service"
+systemctl --user enable --now libinput-gestures.service 2>/dev/null || true
+
 # ── gnome-keyring PAM integration (auto-unlock on GDM login) ─────────────────
 PAM_GDM="/etc/pam.d/gdm-password"
 if [[ -f "$PAM_GDM" ]] && ! grep -q "pam_gnome_keyring" "$PAM_GDM"; then
