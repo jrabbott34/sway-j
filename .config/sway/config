@@ -71,7 +71,6 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id wlsunset -l 40.7 -L -74.0 -t 3500 -T 6500
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id gnome-keyring-daemon --start --components=secrets,ssh,gpg
 exec --no-startup-id swayidle -w \
     timeout 300 '$locker' \
     timeout 600 'swaymsg "output * dpms off"' \
