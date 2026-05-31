@@ -57,6 +57,10 @@ client.unfocused        #414868 #1a1b26 #565f89 #414868   #414868
 client.urgent           #f7768e #1a1b26 #f7768e #f7768e   #f7768e
 
 # ─── autostart ────────────────────────────────────────────────────────────────
+# Export session vars so systemd user services (e.g. libinput-gestures) can use SWAYSOCK
+exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP XDG_SESSION_TYPE
+exec --no-startup-id sleep 1 && systemctl --user restart libinput-gestures.service
+
 exec --no-startup-id awww
 exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
