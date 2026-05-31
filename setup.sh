@@ -43,6 +43,15 @@ fi
 # ── screenshots dir ───────────────────────────────────────────────────────────
 mkdir -p "$HOME/Pictures"
 
+# ── gnome-keyring PAM integration (auto-unlock on GDM login) ─────────────────
+PAM_GDM="/etc/pam.d/gdm-password"
+if [[ -f "$PAM_GDM" ]] && ! grep -q "pam_gnome_keyring" "$PAM_GDM"; then
+    echo "==> Configuring gnome-keyring PAM integration..."
+    printf '\nauth       optional     pam_gnome_keyring.so\nsession    optional     pam_gnome_keyring.so auto_start\n' \
+        | sudo tee -a "$PAM_GDM" > /dev/null
+    echo "  Done — keyring will auto-unlock on next GDM login."
+fi
+
 # ── default shell — optional ──────────────────────────────────────────────────
 if command -v fish &>/dev/null; then
     echo ""
