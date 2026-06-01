@@ -126,6 +126,7 @@ bindsym $mod+Shift+w      exec waypaper --random --backend awww
 # ─── keybindings — sway control ───────────────────────────────────────────────
 bindsym $mod+q            kill
 bindsym $mod+Shift+r      reload
+bindsym $mod+Shift+h      exec ~/.config/sway/scripts/keybinds.sh
 
 floating_modifier $mod normal
 
