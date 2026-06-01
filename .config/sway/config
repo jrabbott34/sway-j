@@ -141,7 +141,6 @@ bindsym $mod+Up           focus up
 bindsym $mod+Right        focus right
 
 # move
-bindsym $mod+Shift+$left  move left
 bindsym $mod+Shift+$down  move down
 bindsym $mod+Shift+$up    move up
 bindsym $mod+Shift+$right move right
