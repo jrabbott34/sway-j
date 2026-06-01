@@ -5,6 +5,8 @@ Built as a clean alternative to Hyprland — no Lua config files.
 
 **Theme:** Tokyo Night · **Font:** FiraCode Nerd Font · **Cursor:** Bibata Modern Ice
 
+![Screenshot](assets/screenshot.png)
+
 ---
 
 ## Quick start
