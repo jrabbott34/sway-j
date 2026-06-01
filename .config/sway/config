@@ -66,7 +66,7 @@ exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync
-exec --no-startup-id swayosd-server
+exec_always --no-startup-id pkill swayosd-server; sleep 0.2 && swayosd-server
 exec --no-startup-id wl-paste --type text --watch cliphist store
 exec --no-startup-id wl-paste --type image --watch cliphist store
 exec --no-startup-id udiskie --tray
@@ -171,12 +171,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # ─── media / brightness keys ──────────────────────────────────────────────────
-bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5% && swayosd-client --output-volume
-bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5% && swayosd-client --output-volume
-bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle && swayosd-client --output-volume mute-toggle
-bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp   exec brightnessctl set +5% && swayosd-client --brightness
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && swayosd-client --brightness
+bindsym XF86AudioRaiseVolume  exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume  exec swayosd-client --output-volume lower
+bindsym XF86AudioMute         exec swayosd-client --output-volume mute-toggle
+bindsym XF86AudioMicMute      exec swayosd-client --input-volume mute-toggle
+bindsym XF86MonBrightnessUp   exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 bindsym XF86AudioPlay         exec playerctl play-pause
 bindsym XF86AudioNext         exec playerctl next
 bindsym XF86AudioPrev         exec playerctl previous
