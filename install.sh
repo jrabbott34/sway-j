@@ -24,6 +24,7 @@ SWAY_PKGS=(
     xdg-desktop-portal-wlr
     wlogout
     kanshi
+    swayosd
 )
 
 # ─── system / shell ───────────────────────────────────────────────────────────
@@ -95,6 +96,7 @@ SCREEN_PKGS=(
     grim
     slurp
     hyprpicker
+    swappy
 )
 
 # ─── appearance ───────────────────────────────────────────────────────────────
