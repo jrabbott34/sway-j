@@ -12,6 +12,7 @@ Built as a clean alternative to Hyprland — no Lua config files.
 ## Quick start
 
 ```bash
+git clone https://github.com/jrabbott34/swaybuild.git
 # 1. Install all packages (installs yay if missing)
 chmod +x install.sh && ./install.sh
 
