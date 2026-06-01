@@ -23,11 +23,15 @@ dbus-run-session sway
 ### First run checklist
 
 - [ ] Drop wallpapers into `~/Pictures`, then press `Super+Shift+W` to pick one
+- [ ] Open **gdm-settings** to theme the GDM login screen (background, cursor, tap-to-click)
 - [ ] Open **nwg-look** if you want to change GTK theme, icons, or cursor later
 - [ ] Open **pavucontrol** to verify your audio output device
 
 > GTK theme (Catppuccin Mocha), icons (Papirus Dark), and cursor (Bibata Modern Ice)
 > are applied automatically by `setup.sh` — no manual nwg-look step needed on first boot.
+>
+> GDM theming requires **gdm-settings** (included in install.sh). Arch's GDM package only
+> creates a group, not a user account, so dconf-based automation doesn't apply.
 
 ---
 
