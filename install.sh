@@ -24,7 +24,7 @@ SWAY_PKGS=(
     xdg-desktop-portal-wlr
     wlogout
     kanshi
-    swayosd
+    wob
 )
 
 # ─── system / shell ───────────────────────────────────────────────────────────
@@ -32,10 +32,10 @@ SYSTEM_PKGS=(
     curl git wget
     htop btop bat
     eza yazi
-    fish zsh
+    fish
     starship
     cliphist
-    jq go
+    jq
     cava
     acpi sysstat
     brightnessctl
@@ -59,14 +59,14 @@ NETWORK_PKGS=(
 
 # ─── audio / media ───────────────────────────────────────────────────────────
 MEDIA_PKGS=(
-    pulseaudio
-    pulseaudio-alsa
-    pulseaudio-bluetooth
+    pipewire
+    pipewire-alsa
+    pipewire-pulse
+    wireplumber
     pavucontrol
     playerctl
     mpv
     yt-dlp
-    redshift
 )
 
 # ─── terminals ────────────────────────────────────────────────────────────────
