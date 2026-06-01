@@ -46,7 +46,7 @@ _gs org.gnome.desktop.interface font-name        'FiraCode Nerd Font 11'
 _gs org.gnome.desktop.interface color-scheme     'prefer-dark'
 echo "  done (gtk-3.0/gtk-4.0 settings.ini also deployed above as fallback)"
 
-# ── default cursor for XWayland / GDM ────────────────────────────────────────
+# ── default cursor for XWayland apps ─────────────────────────────────────────
 mkdir -p "$HOME/.icons/default"
 cat > "$HOME/.icons/default/index.theme" <<'EOF'
 [Icon Theme]
@@ -81,7 +81,6 @@ if command -v fish &>/dev/null; then
         echo "  fish set as default shell (takes effect on next login)"
     fi
 fi
-
 
 # ── grub tokyo night theme ───────────────────────────────────────────────────
 GRUB_THEME_SRC="$REPO_DIR/grub/tokyo-night"
