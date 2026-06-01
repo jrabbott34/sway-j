@@ -10,6 +10,9 @@ alias cat='bat --style=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias c='clear'
+alias swayconfig='gedit ~/.config/sway/config'
+alias wayconfig='gedit ~/.config/waybar/config.jsonc'
 
 # ── environment ───────────────────────────────────────────────────────────────
 set -gx EDITOR nvim
