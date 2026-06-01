@@ -82,24 +82,34 @@ if command -v fish &>/dev/null; then
     fi
 fi
 
-# ── gdm appearance — background color, cursor, tap-to-click ──────────────────
-echo "==> Configuring GDM login screen..."
-GDM_SCRIPT=$(mktemp)
-cat > "$GDM_SCRIPT" << 'GDMEOF'
-#!/bin/bash
-gsettings set org.gnome.desktop.background picture-uri ''
-gsettings set org.gnome.desktop.background picture-uri-dark ''
-gsettings set org.gnome.desktop.background primary-color '#1a1b26'
-gsettings set org.gnome.desktop.background color-shading-type 'solid'
-gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
-gsettings set org.gnome.desktop.interface cursor-size 24
-gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
-GDMEOF
-chmod +x "$GDM_SCRIPT"
-sudo -u gdm dbus-run-session bash "$GDM_SCRIPT" 2>/dev/null \
-    && echo "  GDM: Tokyo Night background, Bibata cursor, tap-to-click enabled" \
-    || echo "  Warning: GDM gsettings failed — GDM may not be installed yet"
-rm -f "$GDM_SCRIPT"
+# ── gdm appearance — dconf system profile (background, cursor, tap-to-click) ──
+echo "==> Configuring GDM login screen via dconf system profile..."
+sudo mkdir -p /etc/dconf/db/gdm.d
+sudo tee /etc/dconf/db/gdm.d/00-swaybuild > /dev/null << 'DCONFEOF'
+[org/gnome/desktop/background]
+picture-uri=''
+picture-uri-dark=''
+primary-color='#1a1b26'
+color-shading-type='solid'
+
+[org/gnome/desktop/interface]
+cursor-theme='Bibata-Modern-Ice'
+cursor-size=24
+
+[org/gnome/desktop/peripherals/touchpad]
+tap-to-click=true
+DCONFEOF
+
+sudo mkdir -p /etc/dconf/profile
+if [[ ! -f /etc/dconf/profile/gdm ]]; then
+    sudo tee /etc/dconf/profile/gdm > /dev/null << 'PROFEOF'
+user-db:user
+system-db:gdm
+PROFEOF
+fi
+
+sudo dconf update
+echo "  GDM: Tokyo Night background, Bibata cursor, tap-to-click enabled"
 
 # ── grub tokyo night theme ───────────────────────────────────────────────────
 GRUB_THEME_SRC="$REPO_DIR/grub/tokyo-night"
