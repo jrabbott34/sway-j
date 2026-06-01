@@ -1,7 +1,11 @@
-# swayfx build (An alterative fun build alternative to Hyprland going .Lua
+# swaybuild
 
-Arch Linux · Sway (Wayland) dotfiles and installer.
-Built as a clean alternative to Hyprland (no `.lua` configs).
+Arch Linux · SwayFX dotfiles and installer.
+Built as a clean alternative to Hyprland — no Lua config files.
+
+**Theme:** Tokyo Night · **Font:** FiraCode Nerd Font · **Cursor:** Bibata Modern Ice
+
+---
 
 ## Quick start
 
@@ -12,52 +16,164 @@ chmod +x install.sh && ./install.sh
 # 2. Deploy configs to ~/.config
 chmod +x setup.sh && ./setup.sh
 
-# 3. Drop a wallpaper
-cp /path/to/your/wallpaper.jpg ~/.config/sway/wallpaper.jpg
-
-# 4. Start Sway
+# 3. Start Sway
 dbus-run-session sway
 ```
 
 ---
 
-## Waybar modules
+## Components
+
+| Role | Tool |
+|------|------|
+| Compositor | SwayFX |
+| Bar | Waybar |
+| Launcher | wofi |
+| Notifications | swaync |
+| Lock screen | swaylock-effects |
+| Logout menu | wlogout |
+| Wallpaper daemon | awww + waypaper |
+| Display profiles | kanshi |
+| Volume/brightness OSD | wob |
+| Clipboard manager | cliphist |
+| Touchpad gestures | libinput-gestures |
+| Night light | wlsunset |
+| Idle / screen-off | swayidle |
+| File manager | Thunar + Yazi |
+| Terminal | Alacritty |
+| Shell | Fish + Starship |
+| GRUB theme | Tokyo Night (custom) |
+
+---
+
+## Waybar
 
 | Position | Modules |
 |----------|---------|
-| Left     | Workspaces 1–5 · Sway mode indicator · Scratchpad count |
-| Center   | Clock (hover = calendar tooltip · click = yad calendar popup) |
-| Right    | Network · Audio · CPU · RAM · Battery · System tray |
+| Left | Workspaces 1–5 · Sway mode indicator · Scratchpad count · MPRIS media |
+| Center | Weather · Clock (hover = calendar · click = popup calendar) |
+| Right | Network · Audio · CPU · RAM · Battery · Power profile · Idle inhibitor · Notifications · Tray |
+
+**Workspace icons:** 1=󰈹 Firefox · 2=󰄛 Terminal · 3=󱙺 Claude · 4=󰇮 Thunderbird · 5=󰘲 Misc
 
 ---
 
 ## Key bindings
 
+### Applications
+
 | Binding | Action |
 |---------|--------|
 | `Super + Return` | Terminal (alacritty) |
 | `Super + Space` | App launcher (wofi) |
-| `Super + E` | File manager (thunar) |
+| `Super + E` | File manager (Thunar) |
+| `Super + Shift + Y` | Yazi TUI file manager (floating) |
+| `Super + Shift + A` | Cava audio visualizer (floating) |
 | `Super + B` | Firefox |
-| `Super + L` | Lock screen (swaylock) |
-| `Super + Shift + E` | Logout menu (wlogout) |
+| `Super + Ctrl + L` | Lock screen (swaylock) |
+
+### Screenshots
+
+| Binding | Action |
+|---------|--------|
 | `Print` | Full screenshot → ~/Pictures |
-| `Super + Print` | Area screenshot → ~/Pictures |
-| `Super + Shift + Print` | Area screenshot → clipboard |
-| `Super + C` | Color picker (hyprpicker) |
-| `Super + 1–5` | Switch workspace |
-| `Super + Shift + 1–5` | Move window to workspace |
+| `Super + Print` | Area select → annotate in swappy |
+| `Super + Shift + Print` | Area select → clipboard |
+
+### Utilities
+
+| Binding | Action |
+|---------|--------|
+| `Super + V` | Clipboard history (cliphist → wofi) |
+| `Super + C` | Color picker (hyprpicker, copies to clipboard) |
+| `Super + Shift + B` | Toggle Waybar |
+| `Super + Shift + E` | Logout menu (wlogout) |
+| `Super + N` | Notification center (swaync) |
+| `Super + Shift + W` | Random wallpaper (waypaper) |
+
+### Window management
+
+| Binding | Action |
+|---------|--------|
+| `Super + Q` | Close window |
 | `Super + F` | Fullscreen |
-| `Super + Shift + Q` | Close window |
+| `Super + Shift + Space` | Toggle floating |
+| `Super + A` | Focus parent |
+| `Super + \` | Split horizontal |
+| `Super + -` | Split vertical |
+| `Super + S` | Stacking layout |
+| `Super + W` | Tabbed layout |
+| `Super + T` | Toggle split layout |
+| `Super + Shift + ~` | Move to scratchpad |
+| `Super + ~` | Show scratchpad |
+
+### Focus & move
+
+| Binding | Action |
+|---------|--------|
+| `Super + H/J/K/L` | Focus left/down/up/right |
+| `Super + ←/↓/↑/→` | Focus left/down/up/right |
+| `Super + Shift + H/J/K/L` | Move window left/down/up/right |
+| `Super + Shift + ←/↓/↑/→` | Move window left/down/up/right |
+
+### Resize mode (`Super + R`)
+
+| Binding | Action |
+|---------|--------|
+| `H/J/K/L` or `←/↓/↑/→` | Shrink/grow width or height |
+| `Return` / `Escape` | Exit resize mode |
+
+### Workspaces
+
+| Binding | Action |
+|---------|--------|
+| `Super + 1–5` | Switch to workspace |
+| `Super + Shift + 1–5` | Move window to workspace |
+
+### Media & brightness (Fn keys → wob OSD pill)
+
+| Key | Action |
+|-----|--------|
+| `XF86AudioRaiseVolume` | Volume +5% |
+| `XF86AudioLowerVolume` | Volume -5% |
+| `XF86AudioMute` | Toggle mute |
+| `XF86AudioMicMute` | Toggle mic mute |
+| `XF86MonBrightnessUp` | Brightness +5% |
+| `XF86MonBrightnessDown` | Brightness -5% |
+| `XF86AudioPlay` | Play / pause |
+| `XF86AudioNext` | Next track |
+| `XF86AudioPrev` | Previous track |
+
+### Sway
+
+| Binding | Action |
+|---------|--------|
 | `Super + Shift + R` | Reload Sway config |
-| `Super + R` | Resize mode |
 
 ---
 
-## Theme
+## Touchpad gestures
 
-**Tokyo Night** color palette across Sway, Waybar, swaylock, Wofi, Dunst, foot, and Alacritty.
-Font: **FiraCode Nerd Font**
+| Gesture | Action |
+|---------|--------|
+| 3-finger swipe left | Next workspace |
+| 3-finger swipe right | Previous workspace |
+| 4-finger swipe up | New terminal |
+| 4-finger swipe down | Logout menu |
+
+---
+
+## Monitor configuration (kanshi)
+
+Display profiles live in `~/.config/kanshi/config` and hot-apply automatically.
+
+| Profile | Outputs |
+|---------|---------|
+| `laptop` | eDP-1 only (1920×1080) |
+| `docked` | DP-5 primary + eDP-1 extended right |
+| `closed` | DP-5 only (lid closed) |
+
+To add your own outputs run `swaymsg -t get_outputs` and edit the kanshi config.
 
 ---
 
@@ -65,20 +181,10 @@ Font: **FiraCode Nerd Font**
 
 | Hyprland | Sway equivalent |
 |----------|----------------|
-| `hyprland` | `sway` |
-| `hyprpaper` | `swaybg` |
+| `hyprland` | `swayfx` |
+| `hyprpaper` | `awww` + `waypaper` |
 | `hypridle` | `swayidle` |
-| `hyprlock` | `swaylock` |
+| `hyprlock` | `swaylock-effects` |
+| `dunst` / `mako` | `swaync` |
 | `xdg-desktop-portal-hyprland` | `xdg-desktop-portal-wlr` |
-| `hyprcursor` / `hyprutils` / `hyprwayland-scanner` | removed |
-
----
-
-## Monitor configuration
-
-Run `swaymsg -t get_outputs` to list output names, then edit `~/.config/sway/config`:
-
-```
-output eDP-1 resolution 1920x1080 position 0,0 scale 1
-output HDMI-A-1 resolution 2560x1440 position 1920,0 scale 1
-```
+| `swayosd` | `wob` |

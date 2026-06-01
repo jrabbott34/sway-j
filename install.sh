@@ -32,10 +32,10 @@ SYSTEM_PKGS=(
     curl git wget
     htop btop bat
     eza yazi
-    fish zsh
+    fish
     starship
     cliphist
-    jq go
+    jq
     cava
     acpi sysstat
     brightnessctl
@@ -66,7 +66,6 @@ MEDIA_PKGS=(
     playerctl
     mpv
     yt-dlp
-    redshift
 )
 
 # ─── terminals ────────────────────────────────────────────────────────────────
