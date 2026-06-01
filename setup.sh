@@ -82,34 +82,21 @@ if command -v fish &>/dev/null; then
     fi
 fi
 
-# ── gdm appearance — dconf system profile (background, cursor, tap-to-click) ──
-echo "==> Configuring GDM login screen via dconf system profile..."
-sudo mkdir -p /etc/dconf/db/gdm.d
-sudo tee /etc/dconf/db/gdm.d/00-swaybuild > /dev/null << 'DCONFEOF'
-[org/gnome/desktop/background]
-picture-uri=''
-picture-uri-dark=''
-primary-color='#1a1b26'
-color-shading-type='solid'
-
-[org/gnome/desktop/interface]
-cursor-theme='Bibata-Modern-Ice'
-cursor-size=24
-
-[org/gnome/desktop/peripherals/touchpad]
-tap-to-click=true
-DCONFEOF
-
-sudo mkdir -p /etc/dconf/profile
-if [[ ! -f /etc/dconf/profile/gdm ]]; then
-    sudo tee /etc/dconf/profile/gdm > /dev/null << 'PROFEOF'
-user-db:user
-system-db:gdm
-PROFEOF
+# ── gdm appearance — write directly to gdm user dconf (safe, no system profile) ─
+echo "==> Configuring GDM login screen..."
+if id gdm &>/dev/null; then
+    _gdm() { sudo -u gdm DBUS_SESSION_BUS_ADDRESS='' dconf write "$@" 2>/dev/null || true; }
+    _gdm /org/gnome/desktop/background/picture-uri        "''"
+    _gdm /org/gnome/desktop/background/picture-uri-dark   "''"
+    _gdm /org/gnome/desktop/background/primary-color      "'#1a1b26'"
+    _gdm /org/gnome/desktop/background/color-shading-type "'solid'"
+    _gdm /org/gnome/desktop/interface/cursor-theme        "'Bibata-Modern-Ice'"
+    _gdm /org/gnome/desktop/interface/cursor-size         24
+    _gdm /org/gnome/desktop/peripherals/touchpad/tap-to-click true
+    echo "  GDM: Tokyo Night background, Bibata cursor, tap-to-click enabled"
+else
+    echo "  gdm user not found — skipping login screen config"
 fi
-
-sudo dconf update
-echo "  GDM: Tokyo Night background, Bibata cursor, tap-to-click enabled"
 
 # ── grub tokyo night theme ───────────────────────────────────────────────────
 GRUB_THEME_SRC="$REPO_DIR/grub/tokyo-night"
