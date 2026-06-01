@@ -66,6 +66,7 @@ exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync
+exec --no-startup-id swayosd-server
 exec --no-startup-id wl-paste --type text --watch cliphist store
 exec --no-startup-id wl-paste --type image --watch cliphist store
 exec --no-startup-id udiskie --tray
@@ -85,12 +86,13 @@ bindsym $mod+Return       exec $term
 bindsym $mod+space        exec $menu
 bindsym $mod+e            exec thunar
 bindsym $mod+Shift+y      exec alacritty --class yazi -e yazi
+bindsym $mod+Shift+a      exec alacritty --class cava -e cava
 bindsym $mod+b            exec firefox
 bindsym $mod+ctrl+l       exec $locker
 
-# screenshots
+# screenshots — Print saves full screen, $mod+Print opens area in swappy to annotate
 bindsym Print             exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
-bindsym $mod+Print        exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+bindsym $mod+Print        exec grim -g "$(slurp)" - | swappy -f -
 bindsym $mod+Shift+Print  exec grim -g "$(slurp)" - | wl-copy
 
 # clipboard history
@@ -169,12 +171,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # ─── media / brightness keys ──────────────────────────────────────────────────
-bindsym XF86AudioRaiseVolume  exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume  exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessUp   exec brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86AudioRaiseVolume  exec swayosd-client --output-volume raise
+bindsym XF86AudioLowerVolume  exec swayosd-client --output-volume lower
+bindsym XF86AudioMute         exec swayosd-client --output-volume mute-toggle
+bindsym XF86AudioMicMute      exec swayosd-client --input-volume mute-toggle
+bindsym XF86MonBrightnessUp   exec swayosd-client --brightness raise
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
 bindsym XF86AudioPlay         exec playerctl play-pause
 bindsym XF86AudioNext         exec playerctl next
 bindsym XF86AudioPrev         exec playerctl previous
@@ -208,6 +210,7 @@ for_window [app_id="thunar"]            floating enable, resize set 900 600
 for_window [class="Thunar"]             floating enable, resize set 900 600
 for_window [app_id="wlogout"]           floating enable, fullscreen enable
 for_window [app_id="yazi"]              floating enable, resize set 1200 700
+for_window [app_id="cava"]              floating enable, resize set 900 300
 
 # ─── bar ─────────────────────────────────────────────────────────────────────
 bar {
