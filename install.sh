@@ -37,6 +37,8 @@ SYSTEM_PKGS=(
     cliphist
     jq
     cava
+    fastfetch
+    cmatrix
     acpi sysstat
     brightnessctl
     power-profiles-daemon
@@ -121,6 +123,7 @@ APP_PKGS=(
     firefox
     gedit
     libreoffice-fresh
+    swayimg
 )
 
 # ─── virtualization / remote ─────────────────────────────────────────────────
