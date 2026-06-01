@@ -59,9 +59,10 @@ NETWORK_PKGS=(
 
 # ─── audio / media ───────────────────────────────────────────────────────────
 MEDIA_PKGS=(
-    pulseaudio
-    pulseaudio-alsa
-    pulseaudio-bluetooth
+    pipewire
+    pipewire-alsa
+    pipewire-pulse
+    wireplumber
     pavucontrol
     playerctl
     mpv
