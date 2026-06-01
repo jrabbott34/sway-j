@@ -82,6 +82,25 @@ if command -v fish &>/dev/null; then
     fi
 fi
 
+# ── gdm appearance — background color, cursor, tap-to-click ──────────────────
+echo "==> Configuring GDM login screen..."
+GDM_SCRIPT=$(mktemp)
+cat > "$GDM_SCRIPT" << 'GDMEOF'
+#!/bin/bash
+gsettings set org.gnome.desktop.background picture-uri ''
+gsettings set org.gnome.desktop.background picture-uri-dark ''
+gsettings set org.gnome.desktop.background primary-color '#1a1b26'
+gsettings set org.gnome.desktop.background color-shading-type 'solid'
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
+gsettings set org.gnome.desktop.interface cursor-size 24
+gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+GDMEOF
+chmod +x "$GDM_SCRIPT"
+sudo -u gdm dbus-run-session bash "$GDM_SCRIPT" 2>/dev/null \
+    && echo "  GDM: Tokyo Night background, Bibata cursor, tap-to-click enabled" \
+    || echo "  Warning: GDM gsettings failed — GDM may not be installed yet"
+rm -f "$GDM_SCRIPT"
+
 # ── grub tokyo night theme ───────────────────────────────────────────────────
 GRUB_THEME_SRC="$REPO_DIR/grub/tokyo-night"
 GRUB_THEME_DST="/boot/grub/themes/tokyo-night"
