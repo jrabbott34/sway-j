@@ -66,15 +66,7 @@ exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync
-exec --no-startup-id pkill wob 2>/dev/null; rm -f /tmp/wob.sock && mkfifo /tmp/wob.sock && tail -f /tmp/wob.sock | wob \
-    --background-color "1a1b26ee" \
-    --bar-color "7aa2f7ff" \
-    --border-color "414868ff" \
-    --border-size 2 \
-    --height 36 \
-    --width 300 \
-    --anchor bottom \
-    --offset 50
+exec --no-startup-id pkill wob 2>/dev/null; rm -f /tmp/wob.sock && mkfifo /tmp/wob.sock && tail -f /tmp/wob.sock | wob
 exec --no-startup-id wl-paste --type text --watch cliphist store
 exec --no-startup-id wl-paste --type image --watch cliphist store
 exec --no-startup-id udiskie --tray
