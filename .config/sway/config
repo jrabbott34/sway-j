@@ -66,7 +66,17 @@ exec --no-startup-id kanshi
 exec_always --no-startup-id sleep 0.5 && waypaper --restore --backend awww
 
 exec --no-startup-id swaync
-exec_always --no-startup-id pkill swayosd-server; sleep 0.2 && swayosd-server
+exec --no-startup-id rm -f /tmp/wob.sock && mkfifo /tmp/wob.sock && tail -f /tmp/wob.sock | wob \
+    --background-color "#1a1b26ee" \
+    --bar-color "#7aa2f7ff" \
+    --border-color "#414868ff" \
+    --border-size 2 \
+    --bar-padding 4 \
+    --height 36 \
+    --width 300 \
+    --anchor bottom \
+    --margin 50 \
+    --overflow-mode wrap
 exec --no-startup-id wl-paste --type text --watch cliphist store
 exec --no-startup-id wl-paste --type image --watch cliphist store
 exec --no-startup-id udiskie --tray
@@ -171,12 +181,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # ─── media / brightness keys ──────────────────────────────────────────────────
-bindsym XF86AudioRaiseVolume  exec swayosd-client --output-volume raise
-bindsym XF86AudioLowerVolume  exec swayosd-client --output-volume lower
-bindsym XF86AudioMute         exec swayosd-client --output-volume mute-toggle
-bindsym XF86AudioMicMute      exec swayosd-client --input-volume mute-toggle
-bindsym XF86MonBrightnessUp   exec swayosd-client --brightness raise
-bindsym XF86MonBrightnessDown exec swayosd-client --brightness lower
+bindsym XF86AudioRaiseVolume  exec ~/.config/sway/scripts/wob-vol.sh +5%
+bindsym XF86AudioLowerVolume  exec ~/.config/sway/scripts/wob-vol.sh -5%
+bindsym XF86AudioMute         exec pactl set-sink-mute @DEFAULT_SINK@ toggle && (pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && echo 0 || pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+(?=%)' | head -1) > /tmp/wob.sock
+bindsym XF86AudioMicMute      exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp   exec ~/.config/sway/scripts/wob-bright.sh +5%
+bindsym XF86MonBrightnessDown exec ~/.config/sway/scripts/wob-bright.sh 5%-
 bindsym XF86AudioPlay         exec playerctl play-pause
 bindsym XF86AudioNext         exec playerctl next
 bindsym XF86AudioPrev         exec playerctl previous
