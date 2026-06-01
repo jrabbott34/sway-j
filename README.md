@@ -13,12 +13,21 @@ Built as a clean alternative to Hyprland — no Lua config files.
 # 1. Install all packages (installs yay if missing)
 chmod +x install.sh && ./install.sh
 
-# 2. Deploy configs to ~/.config
+# 2. Deploy configs, apply theming, enable services
 chmod +x setup.sh && ./setup.sh
 
-# 3. Start Sway
+# 3. Log out and select Sway from GDM, or:
 dbus-run-session sway
 ```
+
+### First run checklist
+
+- [ ] Drop wallpapers into `~/Pictures`, then press `Super+Shift+W` to pick one
+- [ ] Open **nwg-look** if you want to change GTK theme, icons, or cursor later
+- [ ] Open **pavucontrol** to verify your audio output device
+
+> GTK theme (Catppuccin Mocha), icons (Papirus Dark), and cursor (Bibata Modern Ice)
+> are applied automatically by `setup.sh` — no manual nwg-look step needed on first boot.
 
 ---
 

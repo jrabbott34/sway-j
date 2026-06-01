@@ -22,7 +22,7 @@ deploy() {
 
 echo "==> Deploying configs..."
 
-for dir in sway waybar swaylock wofi wlogout swaync gtk-3.0 gtk-4.0 foot alacritty fish starship kanshi yazi cava swappy; do
+for dir in sway waybar swaylock wofi wlogout swaync gtk-3.0 gtk-4.0 foot alacritty fish starship kanshi yazi cava swappy waypaper; do
     src="$CONFIG_SRC/$dir"
     dst="$CONFIG_DST/$dir"
     [[ -d "$src" ]] && deploy "$src" "$dst"
@@ -31,17 +31,30 @@ done
 # ── libinput-gestures (flat file, not a dir) ──────────────────────────────────
 deploy "$CONFIG_SRC/libinput-gestures.conf" "$CONFIG_DST/libinput-gestures.conf"
 
-# ── wallpaper placeholder ─────────────────────────────────────────────────────
-WALLPAPER_DST="$HOME/.config/sway/wallpaper.jpg"
-if [[ ! -f "$WALLPAPER_DST" ]]; then
-    echo ""
-    echo "  NOTE: No wallpaper found at $WALLPAPER_DST"
-    echo "        Drop any JPEG there, or update the 'set \$wallpaper' line in"
-    echo "        ~/.config/sway/config to point at your wallpaper."
-fi
-
-# ── screenshots dir ───────────────────────────────────────────────────────────
+# ── pictures / wallpaper dir ─────────────────────────────────────────────────
 mkdir -p "$HOME/Pictures"
+echo "  wallpaper folder: ~/Pictures — drop images there, then Super+Shift+W to pick one"
+
+# ── gtk / icon / cursor theme (dconf layer) ───────────────────────────────────
+echo "==> Applying GTK theme, icons, and cursor via gsettings..."
+_gs() { gsettings set "$@" 2>/dev/null || true; }
+_gs org.gnome.desktop.interface gtk-theme        'catppuccin-mocha-standard-blue-dark'
+_gs org.gnome.desktop.interface icon-theme       'Papirus-Dark'
+_gs org.gnome.desktop.interface cursor-theme     'Bibata-Modern-Ice'
+_gs org.gnome.desktop.interface cursor-size      24
+_gs org.gnome.desktop.interface font-name        'FiraCode Nerd Font 11'
+_gs org.gnome.desktop.interface color-scheme     'prefer-dark'
+echo "  done (gtk-3.0/gtk-4.0 settings.ini also deployed above as fallback)"
+
+# ── default cursor for XWayland / GDM ────────────────────────────────────────
+mkdir -p "$HOME/.icons/default"
+cat > "$HOME/.icons/default/index.theme" <<'EOF'
+[Icon Theme]
+Name=Default
+Comment=Default Cursor Theme
+Inherits=Bibata-Modern-Ice
+EOF
+echo "  linked ~/.icons/default → Bibata-Modern-Ice"
 
 # ── libinput-gestures systemd user service ────────────────────────────────────
 SYSTEMD_USER_DIR="$HOME/.config/systemd/user"
