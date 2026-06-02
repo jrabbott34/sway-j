@@ -1,4 +1,4 @@
-# swaybuild
+# sway-j (SwayFX)
 
 Arch Linux · SwayFX dotfiles and installer.
 Built as a clean alternative to Hyprland — no Lua config files.
