@@ -232,4 +232,8 @@ sudo systemctl enable gdm.service
 echo "==> Adding $USER to input group (required for gestures)..."
 sudo usermod -aG input "$USER"
 
+# ─── libvirt group for virt-manager (no password prompt) ─────────────────────
+echo "==> Adding $USER to libvirt group (passwordless virt-manager)..."
+sudo usermod -aG libvirt "$USER"
+
 echo "==> Done. Run ./setup.sh to deploy configs."
